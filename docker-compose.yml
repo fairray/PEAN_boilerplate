@@ -1,0 +1,13 @@
+version: '3'
+services:
+ common-api:
+      build:
+        context: ./common-api
+      restart: always
+      # depends_on:
+      #   - postgres
+      ports:
+      - "3000:3000"
+      volumes:
+        - ./common-api:/usr/src/app
+        - /usr/src/app/node_modules
