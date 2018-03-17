@@ -10,6 +10,8 @@ const logger =  createLogger({
             level: 'info',
             filename: path.normalize(`${logsFolder}/combine-logs.log`),
             json: true,
+            humanReadableUnhandledException: true,
+            prettyPrint: true,
             maxsize: 5242880, //5MB
             maxFiles: 5,
             colorize: false
@@ -19,6 +21,8 @@ const logger =  createLogger({
             filename: path.normalize(`${logsFolder}/error-logs.log`),
             handleExceptions: true,
             json: true,
+            humanReadableUnhandledException: true,
+            prettyPrint: true,
             maxsize: 5242880, //5MB
             maxFiles: 5,
             colorize: false
@@ -26,7 +30,9 @@ const logger =  createLogger({
         new transports.Console({
             level: 'debug',
             handleExceptions: true,
-            colorize: true
+            colorize: true,
+            humanReadableUnhandledException: true,
+            prettyPrint: true
         }), 
     ]
 })

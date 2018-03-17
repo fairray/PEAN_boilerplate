@@ -1,19 +1,14 @@
 
 exports.up = function(knex, Promise) {
     return Promise.all([
-        knex.schema.crateTable('users', (table) => {
+        knex.schema.createTable('users', (table) => {
             table.increments('id').primary();
             table.string('name');
-            table.timestamps(true, true);
         }),
-        knex.schema.createTable('entities', function(table) {
+        knex.schema.createTable('entities', (table) => {
             table.increments('id').primary();
             table.string('name');
-            table.integer('user_id').unsigned()
-            table.foreign('user_id')
-              .references('user.id');
-      
-            table.timestamps(true, true);
+            table.integer('user_id').references('id').inTable('users');
           })
     ])
 };
