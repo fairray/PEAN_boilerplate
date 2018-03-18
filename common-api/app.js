@@ -7,14 +7,12 @@ const app = express();
 
 app.get('/', (req, res, next) => {
     Users
-        .getUser({ name:'test1'})
+        .getAll()
         .then((user)=>{
             res.json(user);
         })
         .catch(err=> next(err))
    // logger.info('Now my debug messages are written to console!');
-    //res.end('responce');
-    
 })
 
 app.use(NotFoundHandler);

@@ -1,7 +1,11 @@
-const { TABLES, queries } = require('../db');
+const { db, TABLES, Model } = require('../db');
 
-const getUser = queries.findOne(TABLES.USERS); 
+// const getUser = queries.findOne(TABLES.USERS);
 
-module.exports = {
-    getUser
+class Users extends Model{
+    constructor(db, tableName) {
+        super(db, tableName);
+    }
 }
+
+module.exports = new Users(db, TABLES.USERS);
