@@ -1,13 +1,29 @@
-version: '3'
+version: '3.4'
+
 services:
- common-api:
+  postgres:
+    image: postgres:9.6.2-alpine
+    restart: always
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=dev_data
+  common-api:
       build:
         context: ./common-api
       restart: always
-      # depends_on:
-      #   - postgres
+      depends_on:
+        - postgres
       ports:
-      - "3000:3000"
+        - "3000:3000"
+      command: node ./bin/www
       volumes:
         - ./common-api:/usr/src/app
         - /usr/src/app/node_modules
+      environment:
+        - NODE_ENV=development
+        - DB_HOST=postgres
+        - DB_USER=postgres
+        - DB_PASS=password
+        - APP_HOST=0.0.0.0
+        - APP_PORT=3000
