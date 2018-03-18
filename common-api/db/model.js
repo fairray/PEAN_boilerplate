@@ -24,5 +24,8 @@ class Model {
     getAll(){
         return this.dbTable;
     }
+    findById(id){
+        return this.table.where('id', id)
+    }
 }
 module.exports = Model;
