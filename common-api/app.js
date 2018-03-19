@@ -1,19 +1,12 @@
 const express = require('express');
 const logger = require('./core/logger');
-const Users = require('./models/users');
 
 const app = express();
 
+const { userRoutes } = require('./modules/users');
 
-app.get('/', (req, res, next) => {
-    Users
-        .getAll()
-        .then((user)=>{
-            return res.json(user);
-        })
-        .catch(err=> next(err))
-   // logger.info('Now my debug messages are written to console!');
-})
+
+app.use('/users', userRoutes);
 
 app.use(NotFoundHandler);
 app.use(logErrors);
