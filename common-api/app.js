@@ -9,7 +9,7 @@ app.get('/', (req, res, next) => {
     Users
         .getAll()
         .then((user)=>{
-            res.json(user);
+            return res.json(user);
         })
         .catch(err=> next(err))
    // logger.info('Now my debug messages are written to console!');
