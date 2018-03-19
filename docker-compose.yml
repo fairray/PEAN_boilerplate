@@ -16,7 +16,13 @@ services:
         - postgres
       ports:
         - "3000:3000"
-      command: npm start 
+      command:
+        - /bin/sh
+        - -c
+        - |
+          npm run migrate
+          npm run seed
+          nodemon ./bin/www
       volumes:
         - ./common-api:/usr/src/app
         - /usr/src/app/node_modules

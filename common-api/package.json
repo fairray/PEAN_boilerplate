@@ -7,7 +7,7 @@
     "test": "mocha",
     "migrate": "knex migrate:latest",
     "seed": "knex seed:run",
-    "start": "npm run migrate && npm run seed && nodemon ./bin/www"
+    "start": "nodemon ./bin/www"
   },
   "author": "",
   "license": "ISC",
