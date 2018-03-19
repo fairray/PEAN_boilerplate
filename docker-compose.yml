@@ -16,7 +16,7 @@ services:
         - postgres
       ports:
         - "3000:3000"
-      command: node ./bin/www
+      command: npm start 
       volumes:
         - ./common-api:/usr/src/app
         - /usr/src/app/node_modules
@@ -25,5 +25,6 @@ services:
         - DB_HOST=postgres
         - DB_USER=postgres
         - DB_PASS=password
+        - DB_NAME=dev_data
         - APP_HOST=0.0.0.0
         - APP_PORT=3000

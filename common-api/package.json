@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "mocha",
-    "start": "node ./bin/www"
+    "migrate": "knex migrate:latest",
+    "seed": "knex seed:run",
+    "start": "npm run migrate && npm run seed && nodemon ./bin/www"
   },
   "author": "",
   "license": "ISC",

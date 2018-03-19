@@ -1,6 +1,7 @@
 const userService = require('./service');
 
 const getUsers = (req, res, next) => {
+    
     userService.getUsersWithEntities()
     .then((users)=>{
         return res.json(users);

@@ -3,7 +3,7 @@ const logger = require('./core/logger');
 
 const app = express();
 
-const { userRoutes } = require('./modules/users');
+const  userRoutes = require('./modules/users');
 
 
 app.use('/users', userRoutes);
