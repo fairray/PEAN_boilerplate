@@ -1,0 +1,5 @@
+node_modules
+.env
+*.log
+# exception to the rule
+!logs/.gitkeep
