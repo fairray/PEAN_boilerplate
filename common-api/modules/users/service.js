@@ -1,11 +1,14 @@
-const Users = require('./dal');
+const Joi = require('joi');
 
-const getUsersWithEntities = () => {
-    // make join with entities
-    return Users.getAll(); //example without join
+const validateReq = (value) => {
+    const schema = {
+        name: Joi.string().required()
+    };
+
+    return Joi.validate(value, schema);
 }
 
 
 module.exports = {
-    getUsersWithEntities
+    validateReq
 }

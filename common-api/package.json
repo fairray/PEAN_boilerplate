@@ -12,9 +12,11 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.18.2",
     "debug": "^3.1.0",
     "dotenv": "^5.0.1",
     "express": "^4.16.2",
+    "joi": "^13.1.2",
     "knex": "^0.14.4",
     "pg": "^7.4.1",
     "winston": "^3.0.0-rc2"

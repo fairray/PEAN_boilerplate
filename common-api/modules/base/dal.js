@@ -1,21 +1,18 @@
-const db = require('../../db');
-
-class Model {
+class Dal {
     constructor(db, table){
         this.table = table;
         this.db = db;
-    }
-    get dbTable(){
-        return this.db(this.table);
+        this.read = this.read.bind(this);
     }
     findOne(search){
-        return this.dbTable.where(search).first();
+        return read(search).first();
     }
-    getAll(){
-        return this.dbTable;
+    read(data = {}, opt = {}){
+        const db =  opt.db || this.db;
+        return db(this.table).where(data);
     }
     findById(id){
-        return this.table.where('id', id)
+        return this.read({id});
     }
 }
-module.exports = Model;
+module.exports = Dal;

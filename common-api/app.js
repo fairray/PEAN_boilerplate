@@ -1,13 +1,16 @@
 const express = require('express');
+const bodyParser = require('body-parser')
 const logger = require('./core/logger');
 
+const routes =  require('./routes');
 const app = express();
 
-const  userRoutes = require('./modules/users');
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }))
+// parse application/json
+app.use(bodyParser.json())
 
-
-app.use('/users', userRoutes);
-
+routes.init(app);
 app.use(NotFoundHandler);
 app.use(logErrors);
 app.use(clientErrorHandler);

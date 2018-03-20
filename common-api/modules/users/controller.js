@@ -1,9 +1,14 @@
 const userService = require('./service');
+const Users = require('./dal');
 
 const getUsers = (req, res, next) => {
-    
-    userService.getUsersWithEntities()
-    .then((users)=>{
+    const { error , value } = userService.validateReq(req.body);
+    if ( error ) {
+        res.status(401);
+        return next(new Error(error.message));
+    }
+    Users.getAllUsers()
+    .then((users) => {
         return res.json(users);
     })
     .catch(err=> next(err))
