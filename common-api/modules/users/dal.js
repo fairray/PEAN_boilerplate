@@ -1,5 +1,5 @@
 const { TABLES } = require('../../db');
 
-const BaseDal = require('../base/Dal');
+const BaseDal = require('../base/dal');
 
 module.exports = new BaseDal(TABLES.USERS);

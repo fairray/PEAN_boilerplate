@@ -1,4 +1,4 @@
-const BaseService = require('../base/Service');
+const BaseService = require('../base/service');
 const dal = require('./dal');
 const validation = require('./validation');
 

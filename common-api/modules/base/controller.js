@@ -6,8 +6,8 @@ class BaseController {
   }
   async read(req, res, next) {
     return this.service.read(req.body)
-      .then(data => BaseController.createResponse(data, next))
-      .catch(error => BaseController.catchError(error, res))
+      .then(data => BaseController.createResponse(data, res))
+      .catch(error => BaseController.catchError(error, next))
   }
 
   static catchError(error, next) {
