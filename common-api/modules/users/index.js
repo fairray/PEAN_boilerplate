@@ -3,6 +3,9 @@ const userCtrl = require('./controller');
 
 const router = express.Router();
 
-router.get('/', userCtrl.getUsers)
+router.get('/', userCtrl.read);
+router.get('/:id', userCtrl.readOne);
 
-module.exports = router;
+module.exports = (app) => {
+    app.use('/users', router)
+};

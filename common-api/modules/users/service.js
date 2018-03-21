@@ -1,14 +1,5 @@
-const Joi = require('joi');
+const BaseService = require('../base/service');
+const dal = require('./dal');
+const validation = require('./validation');
 
-const validateReq = (value) => {
-    const schema = {
-        name: Joi.string()
-    };
-
-    return Joi.validate(value, schema);
-}
-
-
-module.exports = {
-    validateReq
-}
+module.exports = new BaseService(dal, validation);

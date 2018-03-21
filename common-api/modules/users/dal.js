@@ -1,11 +1,5 @@
-const { db, TABLES } = require('../../db');
+const { TABLES } = require('../../db');
 
-const { Dal } = require('../base');
+const BaseDal = require('../base/dal');
 
-class Users extends Dal{
-    getAllUsers(){
-        return this.read();
-    }
-}
-
-module.exports = new Users(db, TABLES.USERS);
+module.exports = new BaseDal(TABLES.USERS);
