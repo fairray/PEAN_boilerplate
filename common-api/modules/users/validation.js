@@ -18,6 +18,17 @@ module.exports = {
       }
       resolve(value);
     })
-
+  },
+  readOne(data) {
+    return new Promise((resolve, reject) => {
+      const { error, value } = Joi.validate(data, schema);
+      if (error) {
+        return reject({
+          status: 401, // todo cretae class for this error
+          error,
+        })
+      }
+      resolve(value);
+    })
   }
 };
