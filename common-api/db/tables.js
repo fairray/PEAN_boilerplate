@@ -1,4 +1,4 @@
 module.exports = {
-    USERS: 'users',
-    ENTITIES: 'entities'
-}
+  USERS: 'users',
+  ENTITIES: 'entities',
+};

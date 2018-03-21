@@ -1,36 +1,42 @@
 const express = require('express');
-const bodyParser = require('body-parser')
+const bodyParser = require('body-parser');
 const logger = require('./core/logger');
+const { NotFoundError } = require('./core/errors');
 
-const routes =  require('./routes');
+const routes = require('./routes');
+
 const app = express();
 
 // parse application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.urlencoded({ extended: false }));
 // parse application/json
-app.use(bodyParser.json())
+app.use(bodyParser.json());
 
 routes.init(app);
-app.use(NotFoundHandler);
-app.use(logErrors);
-app.use(clientErrorHandler);
 
-function NotFoundHandler(req, res, next){
-    res.status(404);
-    next(new Error('Not found'))
+function NotFoundHandler(req, res, next) {
+  return next(new NotFoundError());
 }
 
 function logErrors(err, req, res, next) {
-    logger.error(err.stack);
-    next(err);
+  logger.error(err.stack);
+  next(err);
 }
 
 function clientErrorHandler(err, req, res, next) {
-    res.status = res.statusCode || 500;
-    res
-        .send({ error: 'Something failed!' });
+  const status = err.status || 500;
+  const {
+      message ='Something failed!',
+      details = []
+  } = err
+  res.status(status);
+  res.send({ message, details });
 }
-  
+
+
+app.use(NotFoundHandler);
+app.use(logErrors);
+app.use(clientErrorHandler);
 
 
 module.exports = app;
