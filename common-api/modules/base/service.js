@@ -1,5 +1,5 @@
 class BaseService {
-  constructor(dal, validation){
+  constructor(dal, validation) {
     this.dal = dal;
     this.validation = validation;
     this.read = this.read.bind(this);
@@ -7,12 +7,12 @@ class BaseService {
   }
   async read(data) {
     return this.validation.read(data)
-      .then(this.dal.read)
+      .then(this.dal.read);
   }
 
   async readOne(data) {
     return this.validation.readOne(data)
-      .then(this.dal.readOne)
+      .then(this.dal.readOne);
   }
 }
 

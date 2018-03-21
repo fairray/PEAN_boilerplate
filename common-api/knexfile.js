@@ -8,17 +8,17 @@ module.exports = {
       host: process.env.DB_HOST,
       database: process.env.DB_NAME,
       user: process.env.DB_USER,
-      password: process.env.DB_PASS
+      password: process.env.DB_PASS,
     },
     pool: {
       min: 2,
-      max: 10
+      max: 10,
     },
     migrations: {
-      directory: `${ __dirname }/db/migrations`
+      directory: `${__dirname}/db/migrations`,
     },
     seeds: {
-      directory: `${__dirname}/db/seeds`
+      directory: `${__dirname}/db/seeds`,
     },
   },
 
@@ -26,19 +26,19 @@ module.exports = {
     client: 'pg',
     connection: {
       database: 'my_db',
-      user:     'username',
-      password: '123456789'
+      user: 'username',
+      password: '123456789',
     },
     pool: {
       min: 2,
-      max: 10
+      max: 10,
     },
     migrations: {
-      directory: `${__dirname}/db/migrations`
+      directory: `${__dirname}/db/migrations`,
     },
     seeds: {
-      directory: `${__dirname}/db/seeds`
+      directory: `${__dirname}/db/seeds`,
     },
-  }
+  },
 
 };
