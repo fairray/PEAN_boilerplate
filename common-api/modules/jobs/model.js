@@ -5,7 +5,7 @@ require('../users/model');
 const Job = Db.Model.extend({
   tableName: TABLES.JOBS,
   user: function() {
-    return this.hasOne('User');
+    return this.belongsTo('User');
   },
 });
 

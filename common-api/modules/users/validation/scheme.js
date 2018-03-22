@@ -1,6 +1,6 @@
 const Joi = require('joi');
 
-const read = {
+const fetch = {
   name: Joi.string(),
 };
 
@@ -9,6 +9,6 @@ const readOne = {
 };
 
 module.exports = {
-  read,
+  fetch,
   readOne,
 };

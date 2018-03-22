@@ -4,13 +4,13 @@ const service = require('./service');
 class UserController extends BaseController{
     constructor(service){
         super(service);
-        this.fetch.bind(this);
+        this.fetch = this.fetch.bind(this);
     }
-    async fetch(req, res, next){
+    async fetch(req, res, next) {
         const opt = {
-            withRelated: 'Orders'
+            withRelated: ['orders', 'jobs']
         }
-        return this.service.model.fetch({},opt)
+        return this.service.fetch({},opt)
             .then((data) => BaseController.createResponse(data, res))
             .catch(err => BaseController.catchError(err, next))
     }
