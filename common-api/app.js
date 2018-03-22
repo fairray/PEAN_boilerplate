@@ -1,6 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const { NotFoundHandler,clientErrorHandler, logErrors } = require('./core/error-handler');
+const { NotFoundHandler, clientErrorHandler, logErrors } = require('./core/error-handler');
 const routes = require('./routes');
 
 const app = express();
