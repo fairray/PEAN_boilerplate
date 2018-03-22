@@ -1,7 +1,7 @@
-const connection = require('./knex');
+const Db = require('./db');
 const TABLES = require('./tables');
 
 module.exports = {
-  connection,
+  Db,
   TABLES,
 };
