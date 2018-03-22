@@ -4,14 +4,24 @@ exports.up = (knex, Promise) => Promise.all([
     table.increments('id').primary();
     table.string('name');
   }),
-  knex.schema.createTable('entities', (table) => {
+  knex.schema.createTable('orders', (table) => {
     table.increments('id').primary();
-    table.string('name');
-    table.integer('user_id').references('id').inTable('users');
+    table.string('title');
+    table.text('description');
+    table.json('jobs_for_order');
+    table.integer('user_id').notNullable().references('id').inTable('users').onDelete('cascade');;
+  }),
+  knex.schema.createTable('jobs', (table) => {
+    table.increments('id').primary();
+    table.string('title');
+    table.text('text');
+    table.integer('user_id').notNullable().references('id').inTable('users').onDelete('cascade');;
+    table.integer('order_id').notNullable().references('id').inTable('orders').onDelete('cascade');;
   }),
 ]);
 
 exports.down = (knex, Promise) => Promise.all([
   knex.schema.dropTable('users'),
-  knex.schema.dropTable('entities'),
+  knex.schema.dropTable('orders'),
+  knex.schema.dropTable('jobs'),
 ]);
