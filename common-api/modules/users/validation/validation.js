@@ -4,9 +4,9 @@ const { ValidationError } = require('../../../core/errors');
 
 
 module.exports = {
-  fetch(data) {
+  find(data) {
     return new Promise((resolve, reject) => {
-      const { error, value } = Joi.validate(data, scheme.fetch);
+      const { error, value } = Joi.validate(data, scheme.find);
       if (error) {
         return reject(new ValidationError(error.message));
       }

@@ -3,7 +3,7 @@ const userCtrl = require('./controller');
 
 const router = express.Router();
 
-router.get('/', userCtrl.fetch);
+router.get('/', userCtrl.find);
 
 
 module.exports = (app) => {
