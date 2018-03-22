@@ -1,4 +1,5 @@
 module.exports = {
   USERS: 'users',
-  ENTITIES: 'entities',
+  ORDERS: 'orders',
+  JOBS: 'jobs',
 };
