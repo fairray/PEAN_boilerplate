@@ -1,14 +1,14 @@
 const Joi = require('joi');
 
-const read = {
+const find = {
   name: Joi.string(),
 };
 
-const readOne = {
+const findById = {
   id: Joi.number().required(),
 };
 
 module.exports = {
-  read,
-  readOne,
+  find,
+  findById,
 };

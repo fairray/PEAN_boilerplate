@@ -1,18 +1,18 @@
 class BaseService {
-  constructor(dal, validation) {
-    this.dal = dal;
+  constructor(model, validation) {
+    this.model = model;
     this.validation = validation;
-    this.read = this.read.bind(this);
-    this.readOne = this.readOne.bind(this);
+    this.find = this.find.bind(this);
+    this.findById = this.findById.bind(this);
   }
-  async read(data) {
-    return this.validation.read(data)
-      .then(this.dal.read);
+  async find(data = {} , opt = {}){
+    return this.validation.find(data)
+      .then(data => this.model.where(data).fetchAll(opt))
   }
 
-  async readOne(data) {
-    return this.validation.readOne(data)
-      .then(this.dal.readOne);
+  async findById(data , opt = {}){
+    return this.validation.findById(data)
+      .then(data => this.model.where(data).fetch(opt))
   }
 }
 

@@ -1,5 +1,5 @@
 const BaseService = require('../base/service');
-const dal = require('./dal');
 const validation = require('./validation');
+const model = require('./model');
 
-module.exports = new BaseService(dal, validation);
+module.exports = new BaseService(model, validation);

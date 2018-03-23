@@ -1,22 +1,22 @@
-
 class BaseController {
   constructor(service) {
     this.service = service;
-    this.read = this.read.bind(this);
-    this.readOne = this.readOne.bind(this);
+    this.find = this.find.bind(this);
+    this.findById = this.findById.bind(this);
   }
-  async read(req, res, next) {
-    return this.service.read(req.body)
+  async find(req, res, next){
+    const { body } = req;
+    return this.service.find(body)
       .then(data => BaseController.createResponse(data, res))
-      .catch(error => BaseController.catchError(error, next));
+      .catch(err => BaseController.catchError(err, next))
   }
 
-  async readOne(req, res, next) {
-    return this.service.readOne(req.params)
+  async findById(req, res, next){
+    const { id } = req.params;
+    return this.service.findById({id})
       .then(data => BaseController.createResponse(data, res))
-      .catch(error => BaseController.catchError(error, next));
+      .catch(err => BaseController.catchError(err, next))
   }
-
   static catchError(error, next) {
     next(error);
   }
