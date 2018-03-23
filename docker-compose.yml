@@ -53,7 +53,7 @@ services:
       - POSTGRES_PASSWORD=password
       - POSTGRES_DB=dev_data
     volumes:
-      - db-data:/var/lib/postgresql/data/pgdata
+      - db-data:/var/lib/postgresql/data/
   adminer:
     image: adminer
     restart: always
