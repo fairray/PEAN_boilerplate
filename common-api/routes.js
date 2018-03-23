@@ -4,7 +4,7 @@ const jobs = require('./modules/jobs');
 
 const init = (app) => {
   users(app);
-  //orders(app);
+  orders(app);
   //jobs(app);
 };
 module.exports = {

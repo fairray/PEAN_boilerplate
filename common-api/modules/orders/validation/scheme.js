@@ -4,11 +4,11 @@ const find = {
   title: Joi.string(),
 };
 
-const readOne = {
+const findById = {
   id: Joi.number().required(),
 };
 
 module.exports = {
   find,
-  readOne,
+  findById,
 };
