@@ -1,13 +1,6 @@
 version: '3.4'
 
 services:
-  postgres:
-    image: postgres:9.6.2-alpine
-    restart: always
-    environment:
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=password
-      - POSTGRES_DB=dev_data
   common-api:
       build:
         context: ./common-api
@@ -25,7 +18,7 @@ services:
           nodemon ./bin/www
       volumes:
         - ./common-api:/usr/src/app
-        - /usr/src/app/node_modules
+        - common-deps:/usr/src/app/node_modules
       environment:
         - NODE_ENV=development
         - DB_HOST=postgres
@@ -34,3 +27,42 @@ services:
         - DB_NAME=dev_data
         - APP_HOST=0.0.0.0
         - APP_PORT=3000
+  frontend:
+      build:
+        context: ./frontend
+      restart: always
+      depends_on:
+        - common-api
+      ports:
+        - "4200:4200"
+      command:
+        - /bin/sh
+        - -c
+        - |
+          npm start
+      volumes:
+        - ./frontend:/usr/src/app
+        - front-deps:/usr/src/app/node_modules
+      environment:
+        - NODE_ENV=development
+  postgres:
+    image: postgres:9.6.2-alpine
+    restart: always
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=dev_data
+    volumes:
+      - db-data:/var/lib/postgresql/data/
+  adminer:
+    image: adminer
+    restart: always
+    depends_on:
+        - postgres
+    ports:
+      - "8080:8080"
+volumes:
+  common-deps:
+  front-deps:
+  db-data:
+    driver: local
