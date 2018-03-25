@@ -1,4 +1,4 @@
 module.exports = {
-    baseUrl: 'localhost',
-    appName: 'test',
-}
+  baseUrl: 'localhost',
+  appName: 'test',
+};

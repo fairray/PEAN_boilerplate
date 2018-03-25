@@ -52,13 +52,6 @@ describe('CollectionEffects', () => {
     actions$ = TestBed.get(Actions);
   });
 
-  describe('openDB$', () => {
-    it('should call db.open when initially subscribed to', () => {
-      effects.openDB$.subscribe();
-      expect(db.open).toHaveBeenCalledWith('books_app');
-    });
-  });
-
   describe('loadCollection$', () => {
     it('should return a collection.LoadSuccess, with the books, on success', () => {
       const action = new collection.Load();

@@ -5,11 +5,11 @@ require('../jobs/model');
 
 const User = Db.Model.extend({
   tableName: TABLES.USERS,
-  orders: function() {
+  orders() {
     return this.hasMany('Order');
   },
-  jobs: function() {
+  jobs() {
     return this.hasMany('Job');
-  }
+  },
 });
 module.exports = Db.model('User', User);
