@@ -21,12 +21,12 @@ services:
         - common-deps:/usr/src/app/node_modules
       environment:
         - NODE_ENV=development
-        - DB_HOST=postgres
-        - DB_USER=postgres
-        - DB_PASS=password
-        - DB_NAME=dev_data
-        - APP_HOST=0.0.0.0
-        - APP_PORT=3000
+        - CNFG_DB__CONNECTION__HOST=postgres
+        - CNFG_DB__CONNECTION__USER=postgres
+        - CNFG_DB__CONNECTION__PASSWORD=password
+        - CNFG_DB__CONNECTION__DATABASE=dev_data
+        - CNFG_APP__HOST=0.0.0.0
+        - CNFG_APP__PORT=3000
   frontend:
       build:
         context: ./frontend

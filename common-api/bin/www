@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-require('dotenv').config();
+const { host, port } = require('../config').app;
 /**
  * Module dependencies.
  */
@@ -11,9 +11,7 @@ const http = require('http');
  * Get port from environment and store in Express.
  */
 
-const port = normalizePort(process.env.APP_PORT);
-const host = process.env.APP_HOST;
-app.set('port', port);
+app.set('port', normalizePort(port));
 app.set('host', host);
 
 /**
