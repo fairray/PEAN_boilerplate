@@ -1,0 +1,53 @@
+version: '3.4'
+
+services:
+  common-api-test:
+      build:
+        context: ./common-api
+      restart: always
+      depends_on:
+        - postgres-test
+      ports:
+        - "3001:3001"
+      command:
+        - /bin/sh
+        - -c
+        - |
+          npm run migrate
+          npm test
+      volumes:
+        - ./common-api:/usr/src/app
+        - /usr/src/app/node_modules
+      environment:
+        - NODE_ENV=test
+        - CNFG_DB__CONNECTION__HOST=postgres-test
+        - CNFG_DB__CONNECTION__USER=postgres
+        - CNFG_DB__CONNECTION__PASSWORD=password
+        - CNFG_DB__CONNECTION__DATABASE=test_data
+        - CNFG_APP__HOST=0.0.0.0
+        - CNFG_APP__PORT=3001
+  frontend-test:
+      build:
+        context: ./frontend
+      restart: always
+      depends_on:
+        - common-api-test
+      ports:
+        - "4200:4200"
+      command:
+        - /bin/sh
+        - -c
+        - |
+          npm test
+      volumes:
+        - ./frontend:/usr/src/app
+        - /usr/src/app/node_modules
+      environment:
+        - NODE_ENV=test
+  postgres-test:
+    image: postgres:9.6.2-alpine
+    restart: always
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=test_data

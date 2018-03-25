@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "lint": "eslint ./",
-    "test": "mocha",
+    "test": "mocha --timeout 10000 --watch",
     "migrate": "knex migrate:latest",
     "seed": "knex seed:run",
     "start": "nodemon ./bin/www"
@@ -24,10 +24,13 @@
     "winston": "^3.0.0-rc2"
   },
   "devDependencies": {
+    "chai": "^4.1.2",
+    "chai-http": "^4.0.0",
     "eslint": "^4.19.0",
     "eslint-config-airbnb": "^16.1.0",
     "eslint-plugin-import": "^2.9.0",
     "eslint-plugin-jsx-a11y": "^6.0.3",
-    "eslint-plugin-react": "^7.7.0"
+    "eslint-plugin-react": "^7.7.0",
+    "mocha": "^5.0.5"
   }
 }

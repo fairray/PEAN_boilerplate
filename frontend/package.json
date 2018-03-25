@@ -6,7 +6,7 @@
     "ng": "ng",
     "start": "ng serve --aot --host 0.0.0.0 --proxy-config proxy.conf.json",
     "build": "ng build --prod",
-    "test": "ng test",
+    "test": "ng test --browser ChromeHeadlessCI --code-coverage=true --single-run=true",
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
@@ -41,7 +41,9 @@
     "@types/node": "~6.0.60",
     "codelyzer": "^4.0.1",
     "jasmine-core": "~2.8.0",
+    "jasmine-marbles": "^0.2.0",
     "jasmine-spec-reporter": "~4.2.1",
+    "jest": "^22.4.3",
     "karma": "~2.0.0",
     "karma-chrome-launcher": "~2.2.0",
     "karma-coverage-istanbul-reporter": "^1.2.1",
