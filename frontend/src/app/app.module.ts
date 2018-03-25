@@ -7,7 +7,6 @@ import { RouterModule } from '@angular/router';
 
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
-import { DBModule } from '@ngrx/db';
 import {
   StoreRouterConnectingModule,
   RouterStateSerializer,
@@ -19,7 +18,6 @@ import { AuthModule } from './auth/auth.module';
 
 import { routes } from './routes';
 import { reducers, metaReducers } from './reducers';
-import { schema } from './db';
 import { CustomRouterStateSerializer } from './shared/utils';
 
 import { AppComponent } from './core/containers/app';
@@ -76,12 +74,6 @@ import { environment } from '../environments/environment';
      * See: https://github.com/ngrx/platform/blob/master/docs/effects/api.md#forroot
      */
     EffectsModule.forRoot([]),
-
-    /**
-     * `provideDB` sets up @ngrx/db with the provided schema and makes the Database
-     * service available.
-     */
-    DBModule.provideDB(schema),
 
     CoreModule.forRoot(),
 
