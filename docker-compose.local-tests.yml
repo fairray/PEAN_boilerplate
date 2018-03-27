@@ -34,11 +34,12 @@ services:
         - common-api-test
       ports:
         - "4200:4200"
+        - "9876:9876"
       command:
         - /bin/sh
         - -c
         - |
-          npm test
+          yarn run test-ci
       volumes:
         - ./frontend:/usr/src/app
         - /usr/src/app/node_modules
