@@ -8,7 +8,7 @@
     "test": "mocha --timeout 10000 --watch",
     "migrate": "knex migrate:latest",
     "seed": "knex seed:run",
-    "start": "nodemon ./bin/www"
+    "start": "nodemon --inspect=0.0.0.0:5858 ./bin/www"
   },
   "author": "",
   "license": "ISC",

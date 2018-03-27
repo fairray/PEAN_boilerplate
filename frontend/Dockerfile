@@ -11,7 +11,6 @@ RUN apk update \
   && npm cache clean --force \
   && yarn cache clean \
 #install chromium for headless browser tests
-RUN 
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
 COPY ./package.json ./yarn.lock ./
