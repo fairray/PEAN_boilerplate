@@ -1,0 +1,8 @@
+.vscode/*
+.idea/*
+node_modules
+.env
+*.log
+# exception to the rule
+!logs/.gitkeep
+.nyc_output
