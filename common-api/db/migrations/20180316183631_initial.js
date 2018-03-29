@@ -15,8 +15,8 @@ exports.up = (knex, Promise) => Promise.all([
     table.increments('id').primary();
     table.string('title');
     table.text('text');
-    table.integer('user_last_modify').references('id').inTable('users');
-    table.integer('demo_id').notNullable().references('id').inTable('demos');
+    table.integer('user_last_modify').unsigned().references('id').inTable('users');
+    table.integer('demo_id').unsigned().references('id').inTable('demos');
     table.integer('order_id').notNullable().references('id').inTable('orders');
   }),
   knex.schema.createTable('demos', (table) => {
