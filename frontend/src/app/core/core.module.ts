@@ -10,7 +10,7 @@ import { SidenavComponent } from './components/sidenav';
 import { ToolbarComponent } from './components/toolbar';
 import { MaterialModule } from '../material';
 
-import { GoogleBooksService } from './services/google-books';
+import { ApiService } from './services/api-base';
 
 export const COMPONENTS = [
   AppComponent,
@@ -30,7 +30,7 @@ export class CoreModule {
   static forRoot() {
     return {
       ngModule: CoreModule,
-      providers: [GoogleBooksService],
+      providers: [ApiService],
     };
   }
 }

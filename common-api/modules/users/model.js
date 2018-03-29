@@ -9,7 +9,7 @@ const User = Db.Model.extend({
     return this.hasMany('Order', 'author_id');
   },
   jobs() {
-    return this.hasMany('Job');
+    return this.hasMany('Job', 'user_last_modify');
   },
 });
 module.exports = Db.model('User', User);

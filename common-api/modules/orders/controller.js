@@ -8,10 +8,7 @@ class OrderController extends BaseController {
   }
   async findById(req, res, next) {
     const { id } = req.params;
-    const opt = {
-      withRelated: 'user',
-    };
-    return this.service.findById({ id }, opt)
+    return this.service.findById({ id })
       .then(data => BaseController.createResponse(data, res))
       .catch(err => BaseController.catchError(err, next));
   }

@@ -7,10 +7,7 @@ export interface State extends EntityState<Order> {
   selectedOrderId: string | null;
 }
 
-export const adapter: EntityAdapter<Order> = createEntityAdapter<Order>({
-  selectId: (order: Order) => order.id,
-  sortComparer: false,
-});
+export const adapter: EntityAdapter<Order> = createEntityAdapter<Order>();
 
 export const initialState: State = adapter.getInitialState({
   selectedOrderId: null,
@@ -23,9 +20,7 @@ export function reducer(
   switch (action.type) {
 
     case OrderActionTypes.Load: {
-      return adapter.addOne(action.payload, {
-        ...state,
-      });
+      return adapter.addAll(action.payload.orders, state);
     }
 
     default: {
@@ -33,3 +28,19 @@ export function reducer(
     }
   }
 }
+
+export const getSelectedOrderId = (state: State) => state.selectedOrderId;
+
+export const {
+  // select the array of order ids
+  selectIds: selectOrderIds,
+
+  // select the dictionary of order entities
+  selectEntities: selectOrderEntities,
+
+  // select the array of orders
+  selectAll: selectAllOrders,
+
+  // select the total order count
+  selectTotal: selectOrderTotal
+} = adapter.getSelectors();

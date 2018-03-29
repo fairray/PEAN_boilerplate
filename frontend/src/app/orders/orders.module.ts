@@ -8,7 +8,7 @@ import { ComponentsModule } from './components';
 // import { OrderEffects } from './effects/order';
 // import { OrderExistsGuard } from './guards/order-exists';
 
-import { OrderPageComponent } from './containers/order-page';
+import { OrderListPageComponent } from './containers/order-list-page';
 import { MaterialModule } from '../material';
 
 import { reducers } from './reducers';
@@ -21,19 +21,19 @@ import { reducers } from './reducers';
     RouterModule.forChild([
       {
         path: ':id',
-        component: OrderPageComponent,
-        canActivate: [OrderExistsGuard],
+        component: OrderListPageComponent,
+        // canActivate: [OrderExistsGuard],
       },
-      { path: '', component: OrderPageComponent },
+      { path: '', component: OrderListPageComponent },
     ]),
 
     StoreModule.forFeature('orders', reducers),
 
-    EffectsModule.forFeature([OrderEffects]),
+    // EffectsModule.forFeature([OrderEffects]),
   ],
   declarations: [
-    OrderPageComponent
+    OrderListPageComponent
   ],
-  providers: [OrderExistsGuard],
+  // providers: [OrderExistsGuard],
 })
 export class OrdersModule {}

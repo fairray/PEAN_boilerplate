@@ -5,6 +5,7 @@ const model = require('./model');
 class UserService extends BaseService {
   constructor(model, validation) {
     super(model, validation);
+    this.withRelated = ['ordersByAuthor', 'jobs']
   }
 }
 

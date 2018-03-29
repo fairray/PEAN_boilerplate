@@ -8,13 +8,13 @@ import * as fromOrders from '../reducers';
 import * as order from '../actions/order';
 
 @Component({
-  selector: 'bc-view-order-page',
+  selector: 'orders-list-page',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-    <bc-selected-order-page></bc-selected-order-page>
+    <orders-list></orders-list>
   `,
 })
-export class OrderPageComponent implements OnDestroy {
+export class OrderListPageComponent implements OnDestroy {
   actionsSubscription: Subscription;
 
   constructor(store: Store<fromOrders.State>, route: ActivatedRoute) {

@@ -17,7 +17,7 @@ export enum OrderActionTypes {
 export class Load implements Action {
   readonly type = OrderActionTypes.Load;
 
-  constructor(public payload: Order) {}
+  constructor(public payload: {orders: Order[]}) {}
 }
 
 /**
