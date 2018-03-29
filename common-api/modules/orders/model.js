@@ -4,7 +4,10 @@ require('../users/model');
 
 const Order = Db.Model.extend({
   tableName: TABLES.ORDERS,
-  user() {
+  author() {
+    return this.belongsTo('User');
+  },
+  executor() {
     return this.belongsTo('User');
   },
 });

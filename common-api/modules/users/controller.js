@@ -9,7 +9,7 @@ class UserController extends BaseController {
   async findById(req, res, next) {
     const { id } = req.params;
     const opt = {
-      withRelated: 'orders',
+      withRelated: 'ordersByAuthor',
     };
     return this.service.findById({ id }, opt)
       .then(data => BaseController.createResponse(data, res))

@@ -5,8 +5,8 @@ require('../jobs/model');
 
 const User = Db.Model.extend({
   tableName: TABLES.USERS,
-  orders() {
-    return this.hasMany('Order');
+  ordersByAuthor() {
+    return this.hasMany('Order', 'author_id');
   },
   jobs() {
     return this.hasMany('Job');

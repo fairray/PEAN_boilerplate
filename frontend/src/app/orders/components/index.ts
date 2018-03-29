@@ -3,21 +3,13 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
-import { BookAuthorsComponent } from './book-authors';
-import { BookDetailComponent } from './book-detail';
-import { BookPreviewComponent } from './book-preview';
-import { BookPreviewListComponent } from './book-preview-list';
-import { BookSearchComponent } from './book-search';
+import { OrderPreviewComponent } from './order-preview';
 
 import { PipesModule } from '../../shared/pipes';
 import { MaterialModule } from '../../material';
 
 export const COMPONENTS = [
-  BookAuthorsComponent,
-  BookDetailComponent,
-  BookPreviewComponent,
-  BookPreviewListComponent,
-  BookSearchComponent,
+  OrderPreviewComponent
 ];
 
 @NgModule({

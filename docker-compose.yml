@@ -15,7 +15,7 @@ services:
         - -c
         - |
           npm run migrate
-          npm run seed
+          # npm run seed
           npm start
       volumes:
         - ./common-api:/usr/src/app
