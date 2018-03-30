@@ -17,23 +17,30 @@ export interface State extends fromRoot.State {
 export const reducers: ActionReducerMap<OrdersState> = {
   orders: fromOrders.reducer,
 };
-export const selectOrderState = createFeatureSelector<OrdersState>('orders');
+export const getOrdersState = createFeatureSelector<OrdersState>('orders');
 
 
 export const getOrderEntitiesState = createSelector(
-  selectOrderState,
+  getOrdersState,
   state => state.orders
 );
 
-export const selectOrderIds = createSelector(selectOrderState, fromOrders.selectOrderIds);
+export const getSelectedOrderId = createSelector(
+  getOrderEntitiesState,
+  fromOrders.getSelectedId
+);
 
-export const selectOrderEntities = createSelector(selectOrderState, fromOrders.selectOrderEntities);
-export const selectAllOrders = createSelector(selectOrderState, fromOrders.selectAllUsers);
-export const selectOrderTotal = createSelector(selectOrderState, fromOrders.selectUserTotal);
-export const selectCurrentOrderId = createSelector(selectOrderState, fromOrders.getSelectedOrderId);
+export const {
+  selectIds: getOrderIds,
+  selectEntities: getOrderEntities,
+  selectAll: getAllOrders,
+  selectTotal: getTotalOrders,
+} = fromOrders.adapter.getSelectors(getOrderEntitiesState);
 
-export const selectCurrentOrder = createSelector(
-  selectOrderEntities,
-  selectCurrentOrderId,
-  (userEntities, orderId) => userEntities[orderId]
+export const getSelectedOrder = createSelector(
+  getOrderEntities,
+  getSelectedOrderId,
+  (entities, selectedId) => {
+    return selectedId && entities[selectedId];
+  }
 );

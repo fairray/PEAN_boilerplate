@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core';
 import { Order } from '../models/order';
 
 @Component({
-  selector: 'orders-list',
+  selector: 'app-orders-list',
   template: `
   <table>
     <tr>
@@ -18,5 +18,5 @@ import { Order } from '../models/order';
   ],
 })
 export class OrderListComponent {
-  @Input() orders: Order;
+  @Input() order: Order;
 }

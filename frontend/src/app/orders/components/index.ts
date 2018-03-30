@@ -4,12 +4,14 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
 import { OrderListComponent } from './order-list';
+import { OrderDetailsComponent } from './order-details';
 
 import { PipesModule } from '../../shared/pipes';
 import { MaterialModule } from '../../material';
 
 export const COMPONENTS = [
-  OrderListComponent
+  OrderListComponent,
+  OrderDetailsComponent
 ];
 
 @NgModule({

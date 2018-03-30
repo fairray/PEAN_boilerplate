@@ -5,10 +5,12 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 
 import { ComponentsModule } from './components';
-// import { OrderEffects } from './effects/order';
+import { OrderEffects } from './effects/order';
 // import { OrderExistsGuard } from './guards/order-exists';
 
 import { OrderListPageComponent } from './containers/order-list-page';
+import { ViewOrderPageComponent } from './containers/view-order-page';
+import { SelectedOrderPageComponent } from './containers/selected-order-page';
 import { MaterialModule } from '../material';
 
 import { reducers } from './reducers';
@@ -21,7 +23,7 @@ import { reducers } from './reducers';
     RouterModule.forChild([
       {
         path: ':id',
-        component: OrderListPageComponent,
+        component: ViewOrderPageComponent,
         // canActivate: [OrderExistsGuard],
       },
       { path: '', component: OrderListPageComponent },
@@ -29,10 +31,12 @@ import { reducers } from './reducers';
 
     StoreModule.forFeature('orders', reducers),
 
-    // EffectsModule.forFeature([OrderEffects]),
+    EffectsModule.forFeature([OrderEffects]),
   ],
   declarations: [
-    OrderListPageComponent
+    ViewOrderPageComponent,
+    OrderListPageComponent,
+    SelectedOrderPageComponent
   ],
   // providers: [OrderExistsGuard],
 })

@@ -3,6 +3,7 @@ import { Order } from '../models/order';
 
 export enum OrderActionTypes {
   Load = '[Order] Load',
+  Select = '[Order] Select',
 }
 
 /**
@@ -17,11 +18,19 @@ export enum OrderActionTypes {
 export class Load implements Action {
   readonly type = OrderActionTypes.Load;
 
-  constructor(public payload: {orders: Order[]}) {}
+  constructor(public payload: Order[]) {}
+}
+
+export class Select implements Action {
+  readonly type = OrderActionTypes.Select;
+
+  constructor(public payload: string|number) {}
 }
 
 /**
  * Export a type alias of all actions in this action group
  * so that reducers can easily compose action types
  */
-export type OrderActions = Load;
+export type OrderActionsUnion =
+  | Load
+  | Select;
